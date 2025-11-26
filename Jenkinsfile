@@ -57,7 +57,7 @@ pipeline {
          steps {
             sh """
             sed -i "s#image:.*#image: mytub/hello-node:${BUILD_NUMBER}#g" deployment-nodejs.yaml
-            kubectl apply-f  deployment-nodejs.yaml
+            kubectl apply -f  deployment-nodejs.yaml
             """
          }
       }
