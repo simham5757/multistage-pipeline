@@ -38,6 +38,7 @@ pipeline {
 
           }
         }
+      }
 
        stage('archive artifcat') {
          when {
