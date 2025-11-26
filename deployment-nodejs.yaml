@@ -17,6 +17,8 @@ spec:
         image: mytub/node-app:IMAGE_VERSION
         ports:
         - containerPort: 33000
+      imagePullSecrets:
+      - name: dockerhub-secret
 ---
 apiVersion: v1
 kind: Service
