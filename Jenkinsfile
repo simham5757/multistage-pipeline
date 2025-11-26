@@ -43,7 +43,7 @@ pipeline {
           }
         }
       }
-
+     /*
        stage('archive artifcat') {
          when {
               expression { return params.BRANCH == 'master' }
@@ -51,7 +51,8 @@ pipeline {
          steps {
              archiveArtifacts artifacts : 'target/*.jar', fingerprint: true
          }
-       }
+       } 
+    */
        stage ('deploy to k3') {
          steps {
             sh """
