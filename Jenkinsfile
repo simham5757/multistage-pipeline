@@ -31,14 +31,14 @@ pipeline {
        } 
        stage('docker build') {
          steps {
-           sh 'docker build -t mytub/hello-node:${env.BUILD_NUMBER} .'
+           sh "docker build -t mytub/hello-node:${env.BUILD_NUMBER} ."
          }
        }
        stage('push image') {
          steps {
           withDockerRegistry(credentialsId: 'dockerhub_creds', url: 'https://index.docker.io/v1/') {
 
-               sh  'docker push mytub/hello-node:${env.BUILD_NUMBER}'
+               sh  "docker push mytub/hello-node:${env.BUILD_NUMBER}"
 
           }
         }
@@ -54,10 +54,10 @@ pipeline {
        }
        stage ('deploy to k3') {
          steps {
-            sh '''
+            sh """
             sed -i "s#image:.*#image: mytub/hello-node:${BUILD_NUMBER}#g" deployment-nodejs.yaml
             kubectl apply-f  deployment-nodejs.yaml
-            '''
+            """
          }
       }
 
