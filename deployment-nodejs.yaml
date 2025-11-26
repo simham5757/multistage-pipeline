@@ -16,7 +16,7 @@ spec:
       - name: node-app
         image: mytub/node-app:IMAGE_VERSION
         ports:
-        - containerPort: 30008
+        - containerPort: 32000
       imagePullSecrets:
       - name: dockerhub-secret
 ---
@@ -29,6 +29,6 @@ spec:
   selector:
     app: node-app
   ports:
-  - port: 30008
+  - port: 32000
     nodePort: 30008
 
