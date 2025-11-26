@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    options {
+    skipDefaultCheckout(true)
+    }
+
     parameters {
     choice(name: 'BRANCH',choices: ['master','dev','qa'],description: 'select branch')
     booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run unit tests?')
@@ -13,7 +17,7 @@ pipeline {
        stage('build node app') {
          steps {
               sh 'npm install'
-              sk 'npm run build'
+              sh 'npm run build'
          }
        }
    
